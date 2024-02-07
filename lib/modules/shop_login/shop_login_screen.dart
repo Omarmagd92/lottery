@@ -1,6 +1,10 @@
+import 'dart:ffi';
+
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottery/modules/homepage/homePage1.dart';
 import 'package:lottery/modules/shop_register/register1.dart';
 
 import '../../../shared/components/components.dart';
@@ -53,14 +57,14 @@ class LotteryLoginScreen extends StatelessWidget {
             body: Center(
               child: SingleChildScrollView(
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(30.0),
                   child: Form(
                     key: formKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'LOGIN',
+                          'Log in',
                           style: TextStyle(
                             fontSize: 38,
                           ),
@@ -96,12 +100,17 @@ class LotteryLoginScreen extends StatelessWidget {
                           },
                           controller: emailController,
                           prefix: Icons.email_outlined,
-                          labelText: "Email address",
+                          labelText: "Enter you account,email",
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
+                            borderSide:
+                                BorderSide(width: 2.0, color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(
+                              width: 2.0,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -137,10 +146,13 @@ class LotteryLoginScreen extends StatelessWidget {
                           labelText: "Password",
 
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
+                            borderSide:
+                                BorderSide(width: 2.0, color: Colors.blue),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(width: 2.0),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                         SizedBox(
@@ -181,17 +193,28 @@ class LotteryLoginScreen extends StatelessWidget {
                         Center(
                           child: ConditionalBuilder(
                             condition: State is! LotteryLoginLoadingStatue,
-                            builder: (context) => defaultTextButton(
-                              text: "Login",
-                              style: TextStyle(color: Colors.purple.shade400),
-                              isUpperCase: true,
-                              function: () {
-                                if (formKey.currentState!.validate()) {
-                                  LotteryLoginCubit.get(context).userLogin(
-                                      email: emailController.text,
-                                      password: passwordController.text);
-                                }
-                              },
+                            builder: (context) => Container(
+                              width: double.infinity,
+                              padding: EdgeInsets.symmetric(),
+                              child: Container(
+                                child: ElevatedButton(
+                                  onPressed: () {
+                                    if (formKey.currentState!.validate()) {
+                                      LotteryLoginCubit.get(context).userLogin(
+                                          email: emailController.text,
+                                          password: passwordController.text);
+                                    }
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                LotteryLayout()));
+                                  },
+                                  child: Text(
+                                    "sign in",
+                                  ),
+                                ),
+                              ),
                             ),
                             fallback: (context) =>
                                 Center(child: CircularProgressIndicator()),

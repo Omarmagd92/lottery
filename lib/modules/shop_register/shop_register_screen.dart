@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottery/modules/homepage/homePage1.dart';
 import 'package:lottery/modules/shop_login/shop_login_screen.dart';
 
 import '../../../shared/components/components.dart';
@@ -8,6 +9,7 @@ import '../../../shared/components/constants.dart';
 import '../../layout/cubit/cubit.dart';
 
 import '../../layout/lotteryLayout.dart';
+import '../shop_login/cubit_login/cubit.dart';
 import 'cubit_register/cubit.dart';
 import 'cubit_register/statue.dart';
 
@@ -72,9 +74,11 @@ class LotteryRegisterScreen extends StatelessWidget {
                           prefix: Icons.person,
                           labelText: "User Name",
                           focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(width: 2.0),
                           ),
                           enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(width: 2.0),
                           ),
                         ),
@@ -94,67 +98,11 @@ class LotteryRegisterScreen extends StatelessWidget {
                           prefix: Icons.email_outlined,
                           labelText: "Email address",
                           focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(width: 2.0),
                           ),
                           enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        defaultFormField(
-                          context: context,
-                          type: TextInputType.visiblePassword,
-                          keyboardType: TextInputType.visiblePassword,
-                          validate: (value) {
-                            if (value.isEmpty) {
-                              return 'password is too short !!';
-                            }
-                          },
-                          controller: passwordController,
-                          suffix: LotteryRegisterCubit.get(context).suffix,
-                          isPassword:
-                              LotteryRegisterCubit.get(context).isPassword,
-                          suffixPressed: () {
-                            LotteryRegisterCubit.get(context)
-                                .changePasswordVisibility();
-                          },
-                          prefix: Icons.lock_outline,
-                          labelText: "Password",
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
-                          ),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        defaultFormField(
-                          context: context,
-                          type: TextInputType.visiblePassword,
-                          keyboardType: TextInputType.visiblePassword,
-                          validate: (value) {
-                            if (value.isEmpty) {
-                              return 'password is too short !!';
-                            }
-                          },
-                          controller: passwordController,
-                          suffix: LotteryRegisterCubit.get(context).suffix,
-                          isPassword:
-                              LotteryRegisterCubit.get(context).isPassword,
-                          suffixPressed: () {
-                            LotteryRegisterCubit.get(context)
-                                .changePasswordVisibility();
-                          },
-                          prefix: Icons.lock_outline,
-                          labelText: "Password",
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(width: 2.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
                             borderSide: BorderSide(width: 2.0),
                           ),
                         ),
@@ -179,6 +127,71 @@ class LotteryRegisterScreen extends StatelessWidget {
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(width: 2.0),
                           ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        defaultFormField(
+                          context: context,
+                          type: TextInputType.visiblePassword,
+                          keyboardType: TextInputType.visiblePassword,
+                          validate: (value) {
+                            if (value.isEmpty) {
+                              return 'password is too short !!';
+                            }
+                          },
+                          controller: passwordController,
+                          suffix: LotteryRegisterCubit.get(context).suffix,
+                          isPassword:
+                              LotteryRegisterCubit.get(context).isPassword,
+                          suffixPressed: () {
+                            LotteryRegisterCubit.get(context)
+                                .changePasswordVisibility();
+                          },
+                          prefix: Icons.lock_outline,
+                          labelText: "Password",
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(width: 2.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(width: 2.0),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        defaultFormField(
+                          context: context,
+                          type: TextInputType.visiblePassword,
+                          keyboardType: TextInputType.visiblePassword,
+                          validate: (value) {
+                            if (value.isEmpty) {
+                              return 'password is too short !!';
+                            }
+                          },
+                          controller: passwordController,
+                          suffix: LotteryRegisterCubit.get(context).suffix,
+                          isPassword:
+                              LotteryRegisterCubit.get(context).isPassword,
+                          suffixPressed: () {
+                            LotteryRegisterCubit.get(context)
+                                .changePasswordVisibility();
+                          },
+                          prefix: Icons.lock_outline,
+                          labelText: "Password",
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(width: 2.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide(width: 2.0),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
                         ),
                         SizedBox(
                           height: 10,
@@ -211,20 +224,29 @@ class LotteryRegisterScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        Center(
-                          child: defaultTextButton(
-                            text: "Register",
-                            style: TextStyle(color: Colors.purple.shade400),
-                            isUpperCase: true,
-                            function: () {
-                              if (formKey.currentState!.validate()) {
-                                LotteryRegisterCubit.get(context).userRegister(
-                                    name: nameController.text,
-                                    phone: phoneController.text,
-                                    email: emailController.text,
-                                    password: passwordController.text);
-                              }
-                            },
+                        Container(
+                          width: double.infinity,
+                          padding: EdgeInsets.symmetric(),
+                          child: Container(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                if (formKey.currentState!.validate()) {
+                                  LotteryRegisterCubit.get(context)
+                                      .userRegister(
+                                          name: nameController.text,
+                                          phone: phoneController.text,
+                                          email: emailController.text,
+                                          password: passwordController.text);
+                                }
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => LotteryLayout()));
+                              },
+                              child: Text(
+                                "sign in",
+                              ),
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -244,3 +266,19 @@ class LotteryRegisterScreen extends StatelessWidget {
     );
   }
 }
+/* Center(
+                          child: defaultTextButton(
+                            text: "sign up",
+                            style: TextStyle(color: Colors.purple.shade400),
+                            isUpperCase: true,
+                            function: () {
+                              if (formKey.currentState!.validate()) {
+                                LotteryRegisterCubit.get(context).userRegister(
+                                    name: nameController.text,
+                                    phone: phoneController.text,
+                                    email: emailController.text,
+                                    password: passwordController.text);
+                              }
+                            },
+                          ),
+                        ),*/

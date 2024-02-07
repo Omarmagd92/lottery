@@ -6,10 +6,12 @@ class DioHelper {
   static init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'http://192.168.70.25:8080/api/v1/public/user/',
+        baseUrl: 'https://aio-stg.ngr-stream.xyz/api/v1/public/user/',
         receiveDataWhenStatusError: false,
       ),
     );
+
+    dio.options.validateStatus = (status) => true;
   }
 
   Future<dynamic> getData({
@@ -36,7 +38,7 @@ class DioHelper {
         'Content-Type': 'application/json',
       };
 
-  static Future<dynamic> postData({
+  static Future<Response> postData({
     required String url,
     required Map<String, dynamic> data,
     Map<String, dynamic>? query,

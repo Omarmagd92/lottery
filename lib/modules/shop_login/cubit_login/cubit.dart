@@ -24,8 +24,10 @@ class LotteryLoginCubit extends Cubit<LotteryLoginStatues> {
     DioHelper.postData(url: LOGIN, data: {
       'loginname': email,
       'password': password,
+      'roleid': 0,
     }).then((value) {
       print(value.data);
+      print("status code: ${value.statusCode}");
       loginModel = LotteryLoginModel.fromJson(value.data);
       //  print(loginModel.status);
       print(loginModel!.message);

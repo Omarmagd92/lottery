@@ -7,7 +7,10 @@ import 'package:lottery/modules/dropdownbuttonfield.dart';
 import 'package:lottery/modules/homepage/homePage22.dart';
 
 import 'package:lottery/modules/login/cubit/logincubit.dart';
+import 'package:lottery/modules/login/login.dart';
 import 'package:lottery/modules/searchPage.dart';
+import 'package:lottery/modules/searchPage2.dart';
+import 'package:lottery/modules/shop_login/shop_login_screen.dart';
 
 import 'package:lottery/shared/network/dio_helper.dart';
 
@@ -38,9 +41,7 @@ class MyApp extends StatelessWidget {
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: MyDropdownTextField(),
-          );
+              debugShowCheckedModeBanner: false, home: SearchPage2());
         },
       ),
     );
