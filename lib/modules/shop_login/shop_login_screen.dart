@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,12 +6,9 @@ import 'package:lottery/modules/homepage/homePage1.dart';
 import 'package:lottery/modules/shop_register/register1.dart';
 
 import '../../../shared/components/components.dart';
-import '../../../shared/components/constants.dart';
-
-import '../../layout/cubit/cubit.dart';
 
 import '../../layout/lotteryLayout.dart';
-import '../login/cubit/logincubit.dart';
+
 import '../shop_register/shop_register_screen.dart';
 import 'cubit_login/cubit.dart';
 import 'cubit_login/statues.dart';
@@ -165,10 +160,11 @@ class LotteryLoginScreen extends StatelessWidget {
                                 Flexible(
                                   child: CheckboxListTile(
                                     title: Text("remember"),
-                                    value: LoginCubit.get(context).checkedvalue,
+                                    value: LotteryLoginCubit.get(context)
+                                        .checkedvalue,
                                     onChanged: (newValue) {
-                                      LoginCubit.get(context).checkedvalue =
-                                          newValue!;
+                                      LotteryLoginCubit.get(context)
+                                          .checkedvalue = newValue!;
                                     },
                                     controlAffinity: ListTileControlAffinity
                                         .leading, //  <-- leading Checkbox

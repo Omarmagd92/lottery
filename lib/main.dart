@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottery/layout/cubit/cubit.dart';
 import 'package:lottery/layout/cubit/states.dart';
-import 'package:lottery/layout/lotteryLayout.dart';
-import 'package:lottery/modules/dropdownbuttonfield.dart';
-import 'package:lottery/modules/homepage/homePage22.dart';
 
-import 'package:lottery/modules/login/cubit/logincubit.dart';
-import 'package:lottery/modules/login/login.dart';
-import 'package:lottery/modules/searchPage.dart';
-import 'package:lottery/modules/searchPage2.dart';
+import 'package:lottery/modules/shop_login/cubit_login/cubit.dart';
 import 'package:lottery/modules/shop_login/shop_login_screen.dart';
 
 import 'package:lottery/shared/network/dio_helper.dart';
+
+import 'modules/homePage6.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,14 +30,14 @@ class MyApp extends StatelessWidget {
           create: (BuildContext context) => LotteryCubit(),
         ),
         BlocProvider(
-          create: (BuildContext context) => LoginCubit(),
+          create: (BuildContext context) => LotteryLoginCubit(),
         ),
       ],
       child: BlocConsumer<LotteryCubit, LotteryStates>(
         listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
-              debugShowCheckedModeBanner: false, home: SearchPage2());
+              debugShowCheckedModeBanner: false, home: LotteryLoginScreen());
         },
       ),
     );

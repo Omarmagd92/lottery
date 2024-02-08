@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottery/modules/shop_login/cubit_login/cubit.dart';
+import 'package:lottery/modules/shop_login/cubit_login/statues.dart';
 
 import 'package:lottery/modules/shop_register/register3.dart';
-
-import '../login/cubit/logincubit.dart';
-import '../login/cubit/loginstates.dart';
 
 class Register2Page extends StatelessWidget {
   final TextEditingController _controller = TextEditingController();
@@ -12,11 +11,11 @@ class Register2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LoginCubit(),
+      create: (context) => LotteryLoginCubit(),
       child: Scaffold(
-        body: BlocConsumer<LoginCubit, LoginState>(
+        body: BlocConsumer<LotteryLoginCubit, LotteryLoginStatues>(
           listener: (context, state) {
-            if (state is LoginSuccessState) {
+            if (state is LotteryLoginSuccessStatue) {
               // Navigate to the next screen on successful login
               // For now, we'll just print a message
               print('Login successful!');

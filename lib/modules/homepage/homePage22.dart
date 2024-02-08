@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottery/modules/sign/results.dart';
 
 import '../../layout/cubit/cubit.dart';
 import '../../layout/cubit/states.dart';
+import '../results.dart';
 
 class HomePage22 extends StatelessWidget {
   HomePage22({Key? key}) : super(key: key);

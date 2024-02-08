@@ -14,6 +14,7 @@ class LotteryLoginCubit extends Cubit<LotteryLoginStatues> {
   static LotteryLoginCubit get(context) => BlocProvider.of(context);
 
   LotteryLoginModel? loginModel;
+  bool checkedvalue = false;
 
   void userLogin({
     required String email,
